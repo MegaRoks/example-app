@@ -24,8 +24,6 @@ export const AuthPage: React.FC<IAuthProps> = ({ history }: IAuthProps) => {
     };
 
     const sendCodeHandler = (code: string) => {
-        console.log(111);
-
         console.log(code);
     };
 
