@@ -7,26 +7,24 @@ const initialState: IUserState = {
     error: null,
 };
 
+const ACTION_HANDLERS: Record<string, any> = {
+    [AUTH_TYPE.SIGN_IN_SUCCESS]: (state: IUserState, action: IUserActionCreator<IUserState>) => ({
+        ...state,
+        token: action.payload?.token,
+        user: action.payload?.user,
+        error: null,
+    }),
+    [AUTH_TYPE.SIGN_IN_FAILURE]: (state: IUserState, action: IUserActionCreator<IUserState>) => ({
+        ...state,
+        token: null,
+        user: null,
+        error: action.payload?.error,
+    }),
+};
+
 export const userReducer = (
     state: IUserState = initialState,
     action: IUserActionCreator<IUserState>,
 ): IUserState => {
-    switch (action.type) {
-        case AUTH_TYPE.SIGN_IN_SUCCESS:
-            return {
-                ...state,
-                token: action.payload?.token,
-                user: action.payload?.user,
-                error: null,
-            };
-        case AUTH_TYPE.SIGN_IN_FAILURE:
-            return {
-                ...state,
-                token: null,
-                user: null,
-                error: action.payload?.error,
-            };
-        default:
-            return state;
-    }
+    return ACTION_HANDLERS[action.type] ? ACTION_HANDLERS[action.type](state, action) : state;
 };

@@ -6,6 +6,10 @@ import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import { App } from './App';
 import { store } from './redux/rootReducer';
+import { rootSaga } from './redux/rootSaga';
+import { sagaMiddleware } from './redux/middlewares';
+
+sagaMiddleware.run(rootSaga);
 
 const app: JSX.Element = (
     <StrictMode>
