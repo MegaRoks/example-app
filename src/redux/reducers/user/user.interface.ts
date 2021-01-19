@@ -1,4 +1,4 @@
-import { INavigatiom } from '../../../utils/useStep';
+import { INavigation } from '../../../utils/useStep';
 import { IUser } from './../../../interfaces/user.interface';
 
 export interface ISignInSuccessPayload {
@@ -14,7 +14,7 @@ export interface IUserCredentialsPayload {
     readonly email: string;
     readonly password: string;
     readonly isSafeAuth: boolean;
-    readonly navigation: INavigatiom;
+    readonly navigation: INavigation;
 }
 
 export interface IUserState {

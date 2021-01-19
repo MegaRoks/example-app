@@ -4,22 +4,22 @@ interface IStep {
     readonly id: string;
 }
 
-export interface INavigatiom {
+export interface INavigation {
     next(): void;
     previous(): void;
 }
 
-export interface IUseSpet {
+export interface IUseStep {
     readonly step: IStep;
-    readonly navigation: INavigatiom;
+    readonly navigation: INavigation;
 }
 
-export function useStep(steps: IStep[], initialStep: number): IUseSpet {
+export function useStep(steps: IStep[], initialStep: number): IUseStep {
     const [index, setIndex] = useState(initialStep);
     const stepsSize = steps.length;
     const step = steps[index];
 
-    const navigation: INavigatiom = {
+    const navigation: INavigation = {
         next: () => setIndex((prev) => (index >= stepsSize - 1 ? stepsSize - 1 : ++prev)),
         previous: () => setIndex((prev) => (!index ? 0 : --prev)),
     };
