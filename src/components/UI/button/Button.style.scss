@@ -1,0 +1,15 @@
+@import './../../../assets/styles/colors.scss';
+
+.button {
+    margin: 0.2rem;
+    background-color: $primary-color;
+    border: none;
+    color: $secondary-color;
+    padding: 5px 0;
+    font-size: 14px;
+
+    &:hover {
+        background-color: $secondary-color;
+        color: $primary-color;
+    }
+}
