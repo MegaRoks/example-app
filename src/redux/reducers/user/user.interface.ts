@@ -1,4 +1,4 @@
-import { INavigation } from '../../../utils/useStep';
+import { INavigation } from './../../../utils/useStep';
 import { IUser } from './../../../interfaces/user.interface';
 
 export interface ISignInSuccessPayload {

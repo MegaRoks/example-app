@@ -6,9 +6,9 @@ import { signInStart } from './../../redux/reducers/user/user.actions';
 import { SignInComponent } from './../../components/signIn/SignIn.component';
 import { IAuthData, IAuthProps } from './Auth.interface';
 import { useStep } from './../../utils/useStep';
-import { RootStateType } from '../../redux/rootReducer';
-import { LoaderComponent } from '../../components/UI/loader/Loader.component';
-import { VerifyCodeComponent } from '../../components/verifyCode/VerifyCode.component';
+import { RootStateType } from './../../redux/rootReducer';
+import { LoaderComponent } from './../../components/UI/loader/Loader.component';
+import { VerifyCodeComponent } from './../../components/verifyCode/VerifyCode.component';
 
 const steps = [{ id: 'sign-in' }, { id: 'verifyCode' }];
 
@@ -24,6 +24,8 @@ export const AuthPage: React.FC<IAuthProps> = ({ history }: IAuthProps) => {
     };
 
     const sendCodeHandler = (code: string) => {
+        console.log(111);
+
         console.log(code);
     };
 

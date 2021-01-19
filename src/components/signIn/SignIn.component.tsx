@@ -3,7 +3,7 @@ import React from 'react';
 import './SignIn.style.scss';
 import { ButtonComponent } from './../UI/button/Button.component';
 import { InputComponent } from './../UI/input/Input.component';
-import { CheckboxComponentt } from './../UI/checkbox/Checkbox.component';
+import { CheckboxComponent } from './../UI/checkbox/Checkbox.component';
 import { ISignInProps } from './SignIn.interface';
 import { useInput } from './../../utils/useInput';
 
@@ -47,7 +47,7 @@ export const SignInComponent: React.FC<ISignInProps> = ({ onClick }: ISignInProp
                 onClick={signInHandler}
             />
 
-            <CheckboxComponentt
+            <CheckboxComponent
                 id={'checkbox-sign-in'}
                 name={'remember-me'}
                 label={'Remember me'}

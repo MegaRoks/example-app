@@ -3,7 +3,7 @@ import React from 'react';
 import './Checkbox.style.scss';
 import { CheckboxInterface } from './Checkbox.interface';
 
-export const CheckboxComponentt: React.FC<CheckboxInterface> = ({
+export const CheckboxComponent: React.FC<CheckboxInterface> = ({
     id,
     name,
     label,
