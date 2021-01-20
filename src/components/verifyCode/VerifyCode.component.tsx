@@ -4,7 +4,7 @@ import './VerifyCode.style.scss';
 import { ButtonComponent } from './../UI/button/Button.component';
 import { InputComponent } from './../UI/input/Input.component';
 import { IVerifyCodeProps } from './VerifyCode.interface';
-import { useInput } from './../../utils/useInput';
+import { useInput } from '../../hooks/useInput';
 
 export const VerifyCodeComponent: React.FC<IVerifyCodeProps> = ({ onClick }: IVerifyCodeProps) => {
     const inputCode = useInput('');
@@ -20,7 +20,7 @@ export const VerifyCodeComponent: React.FC<IVerifyCodeProps> = ({ onClick }: IVe
             <InputComponent
                 id="input-code"
                 type="text"
-                name="Code"
+                placeholder="Code"
                 value={inputCode.value}
                 onChange={inputCode.onChange}
             />

@@ -1,20 +1,23 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import './Auth.style.scss';
-import { signInStart } from './../../redux/reducers/user/user.actions';
 import { SignInComponent } from './../../components/signIn/SignIn.component';
 import { IAuthData, IAuthProps } from './Auth.interface';
-import { useStep } from './../../utils/useStep';
-import { RootStateType } from './../../redux/rootReducer';
+import { useStep } from '../../hooks/useStep';
 import { LoaderComponent } from './../../components/UI/loader/Loader.component';
 import { VerifyCodeComponent } from './../../components/verifyCode/VerifyCode.component';
+import { useSignInSelector } from '../../redux/reducers/signIn/signIn.hook';
+import { signInStart } from '../../redux/reducers/signIn/signIn.action';
 
 const steps = [{ id: 'sign-in' }, { id: 'verifyCode' }];
 
 export const AuthPage: React.FC<IAuthProps> = ({ history }: IAuthProps) => {
     const dispatch = useDispatch();
-    const isLoading = useSelector((state: RootStateType) => state.loaderState.isLoader);
+    const { loading: IsSignInLoading } = useSignInSelector();
+
+    console.log('IsSignInLoading', IsSignInLoading);
+
     const { step, navigation } = useStep(steps, 0);
 
     const signInHandler = (body: IAuthData) => {
@@ -30,9 +33,13 @@ export const AuthPage: React.FC<IAuthProps> = ({ history }: IAuthProps) => {
     return (
         <div className="auth__container">
             {step.id === 'sign-in' &&
-                (isLoading ? <LoaderComponent /> : <SignInComponent onClick={signInHandler} />)}
+                (IsSignInLoading ? (
+                    <LoaderComponent />
+                ) : (
+                    <SignInComponent onClick={signInHandler} />
+                ))}
             {step.id === 'verifyCode' &&
-                (isLoading ? (
+                (IsSignInLoading ? (
                     <LoaderComponent />
                 ) : (
                     <VerifyCodeComponent onClick={sendCodeHandler} />

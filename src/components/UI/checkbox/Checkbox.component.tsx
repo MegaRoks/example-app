@@ -10,16 +10,15 @@ export const CheckboxComponent: React.FC<CheckboxInterface> = ({
     checked,
     onChange,
 }: CheckboxInterface) => (
-    <div className="custom-checkbox">
-        <input
-            id={id}
-            className="custom-control-input"
-            name={name}
-            type="checkbox"
-            checked={checked}
-            onChange={onChange}
-        ></input>
+    <div className="custom-checkbox" onChange={onChange}>
         <label className="custom-control-label" htmlFor={name}>
+            <input
+                id={id}
+                className="custom-control-input"
+                name={name}
+                type="checkbox"
+                defaultChecked={checked}
+            ></input>
             {label}
         </label>
     </div>

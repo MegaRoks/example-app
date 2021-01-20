@@ -1,10 +1,33 @@
 @import './../../assets/styles/colors.scss';
 
-.sign-in__form {
-    display: flex;
-    flex-direction: column;
-    padding: 1.2rem;
-    width: 220px;
-    height: 180px;
-    border: 0.1rem solid $primary-color;
+.sign-in {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__inputs-container {
+        margin: 1.2rem 0;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        padding: 1.2rem;
+        width: 280px;
+        min-height: 170px;
+        border-radius: 8px;
+        color: #769393;
+        background-color: #ffffff;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__error {
+        color: red;
+    }
 }

@@ -1,24 +1,16 @@
 import { IUserActionCreator, IUserState } from './user.interface';
-import { AUTH_TYPE } from './user.type';
+import { USER_TYPE } from './user.type';
 
 const initialState: IUserState = {
-    token: null,
     user: null,
-    error: null,
 };
 
-const ACTION_HANDLERS: Record<string, any> = {
-    [AUTH_TYPE.SIGN_IN_SUCCESS]: (state: IUserState, action: IUserActionCreator<IUserState>) => ({
+type ActionHandlerType<S, A> = Record<string, (state: S, action: A) => S>;
+
+const ACTION_HANDLERS: ActionHandlerType<IUserState, IUserActionCreator<IUserState>> = {
+    [USER_TYPE.SAVE_USER]: (state: IUserState, action: IUserActionCreator<IUserState>) => ({
         ...state,
-        token: action.payload?.token,
-        user: action.payload?.user,
-        error: null,
-    }),
-    [AUTH_TYPE.SIGN_IN_FAILURE]: (state: IUserState, action: IUserActionCreator<IUserState>) => ({
-        ...state,
-        token: null,
-        user: null,
-        error: action.payload?.error,
+        user: action.payload.user,
     }),
 };
 
